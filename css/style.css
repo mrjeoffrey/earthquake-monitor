@@ -1,6 +1,6 @@
 /* body styling */
 body {
-    background-color: white;
+    background-color: rgb(224, 219, 219);
     font-family: 'Lora', serif;
     font-size: 16px;
 }
@@ -9,7 +9,7 @@ body {
 header {
     justify-content: center;
     color: white;
-    background-color: black;
+    background-color: rgb(78, 77, 77);
     box-shadow: 0 4px 6px 0 black;
     font-family: 'Lora', serif;
     border-radius: 10px 10px 10px 10px;
@@ -56,7 +56,7 @@ button:hover {
 /* Styling for the current earthquakes */
 .quakeCard {
     color: black;
-    background-color: rgb(172, 171, 171);
+    background-color: rgb(131, 190, 131);
     box-shadow: 0 4px 8px 0 black;
     text-align: center;
     font-family: 'Lora', serif;
