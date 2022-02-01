@@ -30,7 +30,7 @@ Create a new directory
 
 Clone this repo
 
-    git clone https://github.com/
+    git clone git@github.com:mrjeoffrey/project-undefined.git
 
 Open folder in VisualStudioCode
 
