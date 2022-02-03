@@ -4,6 +4,12 @@
 	object-position: center;
 }
 
-.littleMap {
-	height: 100%;
+#littleMap {
+	height: 400px;
+	width: 100%;
+}
+
+#markerMap {
+	height:50px;
+	width: 27%;
 }

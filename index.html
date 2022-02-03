@@ -134,11 +134,9 @@
 								<ul role="list" class="divide-y divide-gray-200">
 									<li class="py-3 sm:py-4">
 										<div class="flex items-center space-x-4">
-											<div class="flex-shrink-0">
-												<div id="littleMap"></div>
+											<div class="flex-shrink-0" id="littleMap">
                                                 <!-- <img class="rounded" style="width:90px;" src="/img/map-preview.png"
 													alt="map"> -->
-                                                
 											</div>
 											<div class="flex-1 min-w-0">
 												<p class="text-sm font-medium text-gray-900 truncate">
@@ -156,9 +154,10 @@
 									</li>
 									<li class="py-3 sm:py-4">
 										<div class="flex items-center space-x-4">
-											<div class="flex-shrink-0">
-												<img class="rounded" style="width:90px;" src="/img/map-preview.png"
-													alt="map">
+											<div class="flex-shrink-0" id="markerMap">
+												<!-- <img class="rounded" style="width:90px;" src="/img/map-preview.png"
+													alt="map"> -->
+                                                    
 											</div>
 											<div class="flex-1 min-w-0">
 												<p class="text-sm font-medium text-gray-900 truncate">
@@ -543,28 +542,32 @@
 				<section class="row">
 					<div class="col-lg-3"></div>
 					<div class="col-lg-6 quakeCard">
-						<!--Listing 5 of the latest earthquakes by city search-->
-						<h4>City</h4><br>
-						<h5>Latest Earthquakes:</h5>
-						<h6 id="quakesL">Earthquakes: </h6><br>
-						<h6 id="quakesL">Earthquakes: </h6><br>
-						<h6 id="quakesL">Earthquakes: </h6><br>
-						<h6 id="quakesL">Earthquakes: </h6><br>
-						<h6 id="quakesL">Earthquakes: </h6><br>
+						 <!--Listing 10 of the latest earthquakes by city search-->
+                         <h4>City</h4>
+                         <h5>Latest Earthquakes:</h5>
+                         <h6 id="quakesOne">Earthquake 1: </h6><br>
+                         <h6 id="quakesTwo">Earthquake 2: </h6><br>
+                         <h6 id="quakesThree">Earthquake 3: </h6><br>
+                         <h6 id="quakesFour">Earthquake 4: </h6><br>
+                         <h6 id="quakesFive">Earthquake 5: </h6><br>
+                         <h6 id="quakesSix">Earthquake 6: </h6><br>
+                         <h6 id="quakesSeven">Earthquake 7: </h6><br>
+                         <h6 id="quakesEight">Earthquake 8: </h6><br>
+                         <h6 id="quakesNine">Earthquake 9: </h6><br>
+                         <h6 id="quakesTen">Earthquake 10: </h6><br>
 				</section>
 				<!--Listing 5 of the latest earthquakes in the city by magnitude, largest to smallest-->
 				<section id="usgs" class="hidden">
 					<section class="row">
 						<div class="col-lg-3"></div>
 						<div class="col-lg-6 quakeCard">
-							<!--Listing 5 of the latest earthquakes by city search-->
-							<h4>City</h4><br>
-							<h5 id="fiveDay">Latest Earthquakes by Magnitude</h5>
-							<h6 id="quakeM">Magnitude: </h6><br>
-							<h6 id="quakeM">Magnitude: </h6><br>
-							<h6 id="quakeM">Magnitude: </h6><br>
-							<h6 id="quakeM">Magnitude: </h6><br>
-							<h6 id="quakeM">Magnitude: </h6><br>
+							<!--Listing the latest earthquakes in the city searched by magnitude, largest to smallest-->
+                            <div class="col-lg-6 quakeCard">
+                            <h4>City</h4>
+                            <h5 id="fiveDay">Latest Earthquakes by Magnitude</h5><br>
+                            <h6 id="magSevere">Severe: </h6><br>
+                            <h6 id="magModerate">Moderate: </h6><br>
+                            <h6 id="magMild">Mild: </h6><br>
 						</div>
 						<div class="col-lg-3"></div>
 					</section>
