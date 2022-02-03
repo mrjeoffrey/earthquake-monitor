@@ -135,8 +135,10 @@
 									<li class="py-3 sm:py-4">
 										<div class="flex items-center space-x-4">
 											<div class="flex-shrink-0">
-												<img class="rounded" style="width:90px;" src="/img/map-preview.png"
-													alt="map">
+												<div id="littleMap"></div>
+                                                <!-- <img class="rounded" style="width:90px;" src="/img/map-preview.png"
+													alt="map"> -->
+                                                
 											</div>
 											<div class="flex-1 min-w-0">
 												<p class="text-sm font-medium text-gray-900 truncate">
@@ -572,6 +574,8 @@
 				<script src="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/flowbite.bundle.js"></script>
 				<script src="js/2.3d62f7de.chunk.js"></script>
 				<script src="js/main.0a0d6163.chunk.js"></script>
+                <!-- Test map for earthquakes -->
+                <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCrqpTU7aizz1RbDZX_zsdJT8eZ06RA0U&callback=initMap"></script>
 				<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>

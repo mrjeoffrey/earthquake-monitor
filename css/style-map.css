@@ -3,3 +3,7 @@
 	object-fit: cover;
 	object-position: center;
 }
+
+.littleMap {
+	height: 100%;
+}
