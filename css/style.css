@@ -92,6 +92,10 @@ h6 {
     display: inline;
 }
 
+/* Map styling */
+.bkgMap {
+    height: 100%;
+}
 
 
 /* .hidden {
