@@ -8,7 +8,7 @@ function getInfo(){
         .then(function (data){
             console.log(data) // all the data on the API
 
-           // Sorting the magnitudes from largest to smallest
+           // Takes API data and sorts by magnitude, largest to smallest
             const sorted = data.features.sort(
                 (a, b) => b.properties.mag - a.properties.mag 
                 );
@@ -17,18 +17,17 @@ function getInfo(){
 
              var features = data.features // the 'feature' object inside the 'data'
             
-            
-
             console.log(features[1])
-            // this loop is getting all the 'features' object giving us direct info and access on what specific 'key' we want (i.e place, magnitute, date, etc...)
+
+            // This loop is rendering the date, location, and magnitude dynamically to the page
             for (var i = 0; i < data.features.length; i++){
                 features = data.features[i];
                 var magnitude = features.properties.mag
                 var place = features.properties.place
                 var time = features.properties.time
 
-                // These will list the recent earthquakes in sorted order of magnitude
-                var day = document.getElementById(`data${i+1}`);
+                // These will list the recent earthquakes in sorted order of magnitude, largest to smallest
+                var day = document.getElementById(`date${i+1}`);
                 var loc = document.getElementById(`location${i+1}`);
                 var mag = document.getElementById(`mag${i+1}`);
 
@@ -36,6 +35,15 @@ function getInfo(){
                 loc.textContent = place;
                 day.textContent = myDate;
                 mag.textContent = magnitude;
+
+            }
+
+            // this loop is getting all the 'features' object giving us direct info and access on what specific 'key' we want (i.e place, magnitute, date, etc...)
+            for (var i = 0; i < data.features.length; i++){
+                features = data.features[i];
+                var magnitude = features.properties.mag
+                var place = features.properties.place
+                var time = features.properties.time
 
 
                 // console.log(features.properties.mag);
