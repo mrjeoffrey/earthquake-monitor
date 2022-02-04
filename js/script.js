@@ -7,7 +7,15 @@ function getInfo(){
         })
         .then(function (data){
             console.log(data) // all the data on the API
-            var features = data.features // the 'feature' object inside the 'data'
+
+           // Sorting the magnitudes from largest to smallest
+            const sorted = data.features.sort(
+                (a, b) => b.properties.mag - a.properties.mag 
+                );
+                console.log(sorted);
+            
+
+             var features = data.features // the 'feature' object inside the 'data'
             
             
 
@@ -18,6 +26,18 @@ function getInfo(){
                 var magnitude = features.properties.mag
                 var place = features.properties.place
                 var time = features.properties.time
+
+                // These will list the recent earthquakes in sorted order of magnitude
+                var day = document.getElementById(`data${i+1}`);
+                var loc = document.getElementById(`location${i+1}`);
+                var mag = document.getElementById(`mag${i+1}`);
+
+                myDate = new Date (time)
+                loc.textContent = place;
+                day.textContent = myDate;
+                mag.textContent = magnitude;
+
+
                 // console.log(features.properties.mag);
                 myDate = new Date (time)
                 console.log('Magnitude: '+ magnitude + '\nPlace: ' + place + '\nDate: ' + myDate);
