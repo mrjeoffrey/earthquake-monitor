@@ -1,16 +1,3 @@
-// Test code for big background map 
-function initMap(){
-    var options = {
-        zoom:5,
-        center:{lat:36.7783,lng: -119.4179}
-    }
-    var map = new google.maps.Map(document.getElementById('littleMap'), options);
-}
-
-function createMarker(){
-    
-}
-
 
 function getInfo(){
     //API filters: Earthquake, start time, end time, and limit
