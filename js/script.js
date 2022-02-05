@@ -1,3 +1,7 @@
+// var dateTimeId = document.getElementsByClassName('#date-time');
+// var locationId = document.getElementById('.location');
+// var magnitudeId = document.getElementById('.magnitude');
+// var earthquakeHere = document.getElementById('earthQuake-here')
 
 function getInfo(){
     //API filters: Earthquake, start time, end time, and limit
@@ -40,27 +44,19 @@ function getInfo(){
             }
 
             // this loop is getting all the 'features' object giving us direct info and access on what specific 'key' we want (i.e place, magnitute, date, etc...)
-            for (var i = 0; i < data.features.length; i++){
+
+            for (var i = 0; i < data.features.length; i++) {
                 features = data.features[i];
-                var magnitude = features.properties.mag
-                var place = features.properties.place
-                var time = features.properties.time
-
-
+                magnitude = features.properties.mag
+                place = features.properties.place
+                time = features.properties.time
                 // console.log(features.properties.mag);
-                myDate = new Date (time)
-                console.log('Magnitude: '+ magnitude + '\nPlace: ' + place + '\nDate: ' + myDate);
+                myDate = new Date(time)
+                console.log('Magnitude: ' + magnitude + '\nPlace: ' + place + '\nDate: ' + myDate);
+                displayInfo(myDate)
+
+
             }
-
-                // place = (features.properties.place)
-                // magnitute = (features.properties.mag)
-                // myDate = new Date (features.properties.time)
-
-                // console.log(features)
-                // console.log('\nLocation: ' + place + '\nMagnitute: ' + magnitute + '\nDate: ' + myDate)
-                // console.log('Location: ' + place)
-                // console.log('Magnitute: ' + magnitute)
-                // console.log('Date: ' + myDate)
     });
 }
 
