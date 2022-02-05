@@ -3,17 +3,19 @@
 // var magnitudeId = document.getElementById('.magnitude');
 // var earthquakeHere = document.getElementById('earthQuake-here')
 
+var buttonx = document.getElementById('button-sample')
+
 function getInfo(){
     //API filters: Earthquake, start time, end time, and limit
-    var requestUrl = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&&minlatitude=32.5121&maxlatitude=42.0126&minlongitude=-124.6509&maxlongitude=-114.1315&starttime=2020-01-01&orderby=time&eventtype=earthquake&endtime&limit=10'
+    var requestUrl = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&&minlatitude=32.5121&maxlatitude=42.0126&minlongitude=-124.6509&maxlongitude=-114.1315&starttime=2020-01-01&orderby=magnitude&eventtype=earthquake&endtime&limit=5'
     fetch(requestUrl)
         .then(function (response){
             return response.json();
         })
         .then(function (data){
             console.log(data) // all the data on the API
-
-           // Takes API data and sorts by magnitude, largest to smallest
+            
+        //    Takes API data and sorts by magnitude, largest to smallest
             const sorted = data.features.sort(
                 (a, b) => b.properties.mag - a.properties.mag 
                 );
@@ -51,16 +53,16 @@ function getInfo(){
                 time = features.properties.time
                 // console.log(features.properties.mag);
                 myDate = new Date(time)
-                console.log('Magnitude: ' + magnitude + '\nPlace: ' + place + '\nDate: ' + myDate);
-                displayInfo(myDate)
 
+                var locationSev = document.getElementById(`sever-location${i+1}`)
+                var magSev = document.getElementById(`sever-mag${i+1}`)
+                var dateSev = document.getElementById(`sever-date${i+1}`)
 
+                locationSev.innerText = place
+                magSev.innerText = magnitude
+                dateSev.innerText = myDate
             }
     });
 }
-
-getInfo();
-
-
 
 getInfo();
