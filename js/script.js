@@ -1,3 +1,19 @@
+const searchInput = document.getElementById('input');
+console.log(searchInput);
+const submitButton = document.getElementById('submit-btn');
+console.log(submitButton);
+
+searchInput.addEventListener('input', e => {
+    const value = e.target.value
+    console.log(value)
+})  
+submitButton.addEventListener('click', getInfo())
+console.log(submitButton)
+
+
+
+
+
 function getInfo(){
     //API filters: Earthquake, start time, end time, and limit
     var requestUrl = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&&minlatitude=32.5121&maxlatitude=42.0126&minlongitude=-124.6509&maxlongitude=-114.1315&starttime=2020-01-01&orderby=time&eventtype=earthquake&endtime&limit=10'
@@ -14,10 +30,21 @@ function getInfo(){
                 );
                 console.log(sorted);
             
-
-             var features = data.features // the 'feature' object inside the 'data'
+            const sortedb = data.features.sort(
+                (a, b) => b.properties.time - a.properties.time 
+                );
+                console.log(sortedb);        
+            //  var features = data.features // the 'feature' object inside the 'data'
             
-            console.log(features[1])
+            // console.log(features[1])
+
+
+            // 
+            
+
+            //  var features = data.features // the 'feature' object inside the 'data'
+            
+            // console.log(features[1])
 
             // This loop is rendering the date, location, and magnitude dynamically to the page
             for (var i = 0; i < data.features.length; i++){
