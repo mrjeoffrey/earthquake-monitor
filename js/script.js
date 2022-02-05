@@ -44,7 +44,7 @@ function getInfo(){
             }
 
             // this loop is getting all the 'features' object giving us direct info and access on what specific 'key' we want (i.e place, magnitute, date, etc...)
-.)
+
             for (var i = 0; i < data.features.length; i++) {
                 features = data.features[i];
                 magnitude = features.properties.mag
