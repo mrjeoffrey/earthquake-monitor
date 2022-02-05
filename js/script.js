@@ -16,15 +16,15 @@ console.log(submitButton)
 
 function getInfo(){
     //API filters: Earthquake, start time, end time, and limit
-    var requestUrl = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&&minlatitude=32.5121&maxlatitude=42.0126&minlongitude=-124.6509&maxlongitude=-114.1315&starttime=2020-01-01&orderby=time&eventtype=earthquake&endtime&limit=10'
+    var requestUrl = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&&minlatitude=32.5121&maxlatitude=42.0126&minlongitude=-124.6509&maxlongitude=-114.1315&starttime=2020-01-01&orderby=magnitude&eventtype=earthquake&endtime&limit=10'
     fetch(requestUrl)
         .then(function (response){
             return response.json();
         })
         .then(function (data){
             console.log(data) // all the data on the API
-
-           // Takes API data and sorts by magnitude, largest to smallest
+            
+        //    Takes API data and sorts by magnitude, largest to smallest
             const sorted = data.features.sort(
                 (a, b) => b.properties.mag - a.properties.mag 
                 );
@@ -65,29 +65,40 @@ function getInfo(){
 
             }
 
+    });
+}
+
+
+function earthQuakeByTime(){
+    //API filters: Earthquake, start time, end time, and limit
+    var requestUrl = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&&minlatitude=32.5121&maxlatitude=42.0126&minlongitude=-124.6509&maxlongitude=-114.1315&starttime=2020-01-01&orderby=time&eventtype=earthquake&endtime&limit=10'
+    fetch(requestUrl)
+        .then(function (response){
+            return response.json();
+        })
+        .then(function (data){
+            console.log(data) // all the data on the API
+
             // this loop is getting all the 'features' object giving us direct info and access on what specific 'key' we want (i.e place, magnitute, date, etc...)
-            for (var i = 0; i < data.features.length; i++){
+            for (var i = 0; i < data.features.length; i++) {
                 features = data.features[i];
-                var magnitude = features.properties.mag
-                var place = features.properties.place
-                var time = features.properties.time
-
-
+                magnitude = features.properties.mag
+                place = features.properties.place
+                time = features.properties.time
                 // console.log(features.properties.mag);
-                myDate = new Date (time)
-                console.log('Magnitude: '+ magnitude + '\nPlace: ' + place + '\nDate: ' + myDate);
+                myDate = new Date(time)
+
+                var locationSev = document.getElementById(`sever-location${i+1}`)
+                var magSev = document.getElementById(`sever-mag${i+1}`)
+                var dateSev = document.getElementById(`sever-date${i+1}`)
+
+                locationSev.innerText = place
+                magSev.innerText = magnitude
+                dateSev.innerText = myDate
             }
-
-                // place = (features.properties.place)
-                // magnitute = (features.properties.mag)
-                // myDate = new Date (features.properties.time)
-
-                // console.log(features)
-                // console.log('\nLocation: ' + place + '\nMagnitute: ' + magnitute + '\nDate: ' + myDate)
-                // console.log('Location: ' + place)
-                // console.log('Magnitute: ' + magnitute)
-                // console.log('Date: ' + myDate)
     });
 }
 
 getInfo();
+
+earthQuakeByTime();
