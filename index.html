@@ -34,7 +34,8 @@
 			</span>
 		</div>
 	</header>
-
+		<!-- Temp Container for bkg map -->
+		<div class="bigMap" id="bigMap"></div>
 	<!-- Latest Row	 -->
 	<section id="map-hero" class="bg-gray-100 border-gray-200 px-2 sm:px-4 py-2.5">
 		<!-- Controller Div with flex-->
@@ -60,7 +61,7 @@
 
 				<!-- Search Results-->
 				<div class="w-1/2 block p-0 max-w-lg text-center">
-					<div href="#" class="block p-8 max-w-lg rounded-lg border border-gray-100 shadow-lg my-8">
+					<div href="#" class="block p-8 max-w-lg rounded-lg border border-gray-100 shadow-lg my-8" id="bigMap">
 						<h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Map</h5>
 					</div>
 					<div href="#"
@@ -453,8 +454,6 @@
 				<script src="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/flowbite.bundle.js"></script>
 				<script src="js/2.3d62f7de.chunk.js"></script>
 				<script src="js/main.0a0d6163.chunk.js"></script>
-                <!-- Test map for earthquakes -->
-                <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCrqpTU7aizz1RbDZX_zsdJT8eZ06RA0U&callback=initMap"></script>
 				<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
 	<footer class="w-full py-12 bg-gray-800 text-white">
 		<div class="px-4 mx-auto w-full">
@@ -593,6 +592,7 @@
 		integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
 		crossorigin="anonymous"></script> -->
 	<script src="js/script.js"></script>
+	<script src="js/bkgmap.js"></script>
 </body>
 
 </html>
