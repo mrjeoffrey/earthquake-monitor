@@ -1,18 +1,104 @@
-const searchInput = document.getElementById('input');
-console.log(searchInput);
-const submitButton = document.getElementById('submit-btn');
-console.log(submitButton);
+// var submitButtonEl = document.getElementById("submit-btn")
+// submitButtonEl.addEventListener ("click", getInfo)
+var searchInput = document.querySelector("search-input")
+let requestUrl = []
+//var longitude = data.features[i].geometry.coordinates[0]
+//var latitude = data.features[i].geometry.coordinates[1]
 
-searchInput.addEventListener('input', e => {
-    const value = e.target.value
+let zipCode = []
+//var currentLoc = "https://ipapi.co/json"
+
+
+// function getInput() {
+//     var 
+
+// function getValue() {
+//     var searchInput
+// }
+
+
+function changeLoc(){
+    var searchInput1 = searchInput.value
+    console.log(searchInput1)
+    var zipUrl = "https://nominatim.openstreetmap.org/search?postalcode=" + searchInput1 + "&country=USA&format=json"
+    fetch(zipUrl).then(function (response) {
+        return response.json()
+    }).then(function (data){
+        latitude = data[0].latitude
+        longitude = data[0].longitude
+        //city = data[0].display_name.substring(0, data[0].display_name.indexOf(","))
+        clear()
+    }).catch(function () {
+    //     zipCode = "Search here"
+    //     searchInput.value = ""
+    //     searchInput.placeholder = zipCode
+    
+    }
+    )
+var submitButtonEl = document.getElementById("submit-btn")
+
+submitButtonEl.addEventListener('click', getValue)
+
+function getValue(){
+    var inputVal = document.querySelector("input")
+    var value = inputVal.value
+
     console.log(value)
-})  
-submitButton.addEventListener('click', getInfo())
-console.log(submitButton)
+}
+// function changeVal() {
+//     const longlat = ol.proj.transform(map.getView().getCenter(), 'EPSG:3857', 'EPSG:4326')
+//     latitude = longlat[1]
+//     longiitude = longlat[0]
+//     var localValue = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=" + latitude + "&lon=" + longitude + "&zoom="
+//     fetch(localValue).then(function (response){
+//         return response.json()
+//     }).then(function (data) {
+//         city = data.display_name.substring(data.display_name.indexOf(",") + 1)
+//         city = city.substring(0, city.indexOf(","))
+//         var matchData = data.display_name.match(/\b\d{5}\b/g)
+
+//         if (matchData) {
+//             zipCode = matchData[0]
+//         } else {
+//             zipCode = "00000"
+//         }
+//         searchInput.value = zipCode
+//         clear()
+
+//     })
+
+//     console.log(changeVal)
+// }
 
 
+//inputVal.addEventListener("input", e => {
+    //var value = e.target.value
+    //console.log(value)
+//})
+/*let data = []
+submitButtonEl.addEventListener('click', getInfo)
+
+inputVal.addEventListener("input", e => {
+    const value = e.target.value
+    data.forEach(features => {
+        const isVisible = features.properties.place.includes(value) 
+
+    })
+})*/
 
 
+//var searchVal = document.getElementbyId ("search-input")
+    //inputVal.toLowerCase();
+    
+//function search_bar(){
+    
+    //var inputVal = document.getInfo()
+
+/*function getInfo(){
+    var inputVal = document.querySelector("input")
+    var value = inputVal.value
+    console.log(inputVal)
+}*/
 
 function getInfo(){
     //API filters: Earthquake, start time, end time, and limit
@@ -30,10 +116,6 @@ function getInfo(){
                 );
                 console.log(sorted);
             
-            const sortedb = data.features.sort(
-                (a, b) => b.properties.time - a.properties.time 
-                );
-                console.log(sortedb);        
             //  var features = data.features // the 'feature' object inside the 'data'
             
             // console.log(features[1])
@@ -100,5 +182,5 @@ function earthQuakeByTime(){
 }
 
 getInfo();
-
-earthQuakeByTime();
+    
+earthQuakeByTime();}
