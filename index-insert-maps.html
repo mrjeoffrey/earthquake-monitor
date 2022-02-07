@@ -8,6 +8,7 @@
 	<title>Quakes: Up-to-date Earthquake Actvity</title>
 	<link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/flowbite.min.css" />
 	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./css/map.css">
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-HDH1SLCBQN"></script>
@@ -23,7 +24,7 @@
 
 <body>
 	<!--Title Bar with styles-->
-	<header class="bg-gray-800 border-gray-200 px-2 sm:px-4 py-2.5">
+	<header class="bg-gray-800 border-gray-200 px-2 sm:px-4 py-2.5 sticky">
 		<!-- Controller Div with flex-->
 		<div class="container flex flex-wrap justify-center items-center mx-auto">
 			<!-- Site Title -->
@@ -35,14 +36,16 @@
 		</div>
 	</header>
 
+
+
 	<!-- Latest Row	 -->
-	<section id="map-hero" class="bg-gray-100 border-gray-200 px-2 sm:px-4 py-2.5">
+	<section class="bg-custom border-gray-200 px-2 sm:px-4 py-2.5">
 		<!-- Controller Div with flex-->
 
 		<div class="p-6 flex flex-wrap justify-around w-full max-w-8xl mx-auto">
 			<div class="container">
 
-				<div class="flex flex-wrap justify-around mx-auto my-12">
+				<div class="flex flex-wrap justify-around mx-auto my-6">
 					<!-- Search Card-->
 					<div href="#"
 						class="w-1/2 block p-8 max-w-lg bg-white rounded-lg border border-gray-200 shadow-lg hover:bg-gray-100">
@@ -63,9 +66,9 @@
 
 					<!-- Search Results-->
 					<div class="w-1/2 block p-0 max-w-lg text-center">
-						<div href="#" class="block p-8 max-w-lg rounded-lg border border-gray-100 shadow-lg my-8">
-							<h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Map</h5>
-						</div>
+						<!-- <div href="#" class="block p-8 max-w-lg rounded-lg border border-gray-100 shadow-lg my-8">
+							<h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Map</h5> 
+						</div>-->
 						<div href="#"
 							class="block p-8 max-w-lg bg-white rounded-lg border border-gray-200 shadow-lg hover:bg-gray-100">
 							<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">%City</h5>
@@ -77,6 +80,11 @@
 
 				</div>
 			</div>
+	</section>
+
+	<!-- Map Section -->
+	<section class="container">
+		<div id="map"></div>
 	</section>
 
 	<!-- News Section  -->
@@ -649,18 +657,18 @@
 	</footer>
 	<script src="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/flowbite.bundle.js"></script>
 
-	<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
-		integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
-		crossorigin="anonymous"></script> -->
+
+
+
 	<script src="/js/script.js"></script>
-	<script src="/js/bkgmap.js"></script>
+	<!-- <script src="/js/bkgmap.js"></script> -->
 	<script src="/js/map.js"></script>
+	<script async
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC72d4HR-Hqfy8tUtGo4nJDGGvE4ux2Brw&callback=initMap">
+		</script>
 </body>
 
 </html>
