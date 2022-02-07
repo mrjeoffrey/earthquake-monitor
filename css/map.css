@@ -16,3 +16,7 @@
 .sticky {
 	position: sticky;
 }
+
+#news {
+	height: 100%;
+}
