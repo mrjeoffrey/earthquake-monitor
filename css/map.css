@@ -1,0 +1,22 @@
+#map {
+	height: 700px;
+	width: 100%;
+}
+
+.map-preview {
+	height: 65px;
+	width: 90px;
+	border-radius: 0.5rem;
+}
+
+.bg-custom {
+	background-color: #0b1d45;
+}
+
+.sticky {
+	position: sticky;
+}
+
+#news {
+	height: 100%;
+}
