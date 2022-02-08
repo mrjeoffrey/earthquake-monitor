@@ -34,7 +34,7 @@ function getInfo() {
 				myDate = new Date(time);
 				loc.textContent = place;
 				day.textContent = myDate;
-				mag.textContent = magnitude;
+				mag.textContent = magnitude + " M";
 			}
 		});
 }
@@ -132,11 +132,11 @@ function mapDisplay() {
 function getCircle(magnitude) {
 	return {
 		path: google.maps.SymbolPath.CIRCLE,
-		fillColor: "red",
-		fillOpacity: 0.2,
-		scale: Math.pow(2, magnitude) / 2,
+		fillColor: "orange",
+		fillOpacity: 0.35,
+		scale: Math.pow(3, magnitude) / 2,
 		strokeColor: "white",
-		strokeWeight: 0.5,
+		strokeWeight: 0.8,
 	};
 }
 
