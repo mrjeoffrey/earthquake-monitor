@@ -87,15 +87,42 @@ inputLong + "," + inputLat +
 "&key=YOUR_API_KEY"
 */
 
+let bigMap;
 // Initializes GoogleMaps API in Maps Section
-function initMap() {
+function mapDisplay() {
 	var options = {
 		center: { lat: 36.5935, lng: -122.612 },
 		zoom: 6,
 		mapTypeId: "hybrid",
 	};
-	map = new google.maps.Map(document.getElementById("map"), options);
-}
+	bigMap = new google.maps.Map(document.getElementById("map"), options);
+
+    var latestUsgs = document.createElement("script");
+
+    latestUsgs.src = "https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js";
+    document.getElementsByTagName("head")[0].appendChild(latestUsgs);
+    bigMap.data.setStyle((feature) => {
+      const magnitude = feature.getProperty("mag");
+      return {
+        icon: getCircle(magnitude),
+      };
+    });
+  }
+  
+  function getCircle(magnitude) {
+    return {
+      path: google.maps.SymbolPath.CIRCLE,
+      fillColor: "red",
+      fillOpacity: 0.2,
+      scale: Math.pow(2, magnitude) / 2,
+      strokeColor: "white",
+      strokeWeight: 0.5,
+    };
+  }
+  
+  function eqfeed_callback(results) {
+    bigMap.data.addGeoJson(results);
+  }
 
 getInfo();
 
