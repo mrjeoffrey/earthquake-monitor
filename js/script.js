@@ -8,7 +8,16 @@
 // }
 // getValue();
 
-function geoCode(){
+var submitButton = document.getElementById("submit-btn")
+submitButton.addEventListener("click", geoCode)
+let value = []
+function getValue(){
+    var inputVal = document.querySelector("input")
+    var value = inputVal.value
+    console.log(value)
+}
+
+function geoCode() {
     
     // var APIKey = "AIzaSyAv_sX-T1PMgiRLVrTjhrRAbJ-K7Plw9Nw"
     // var longitude = "-119.4179324"
@@ -22,15 +31,27 @@ function geoCode(){
         .then(function (data) {
             console.log(data)  
 
+            var results = data.results[0].geometry.location
+
+            var latitude = results.lat
+            var longitude = results.lng
+            var city = data.results[0].address_components.types
+            console.log(city)
+
+            console.log(latitude)
+            console.log(longitude)
+            searchCoordinates(longitude, latitude)
+            getValue()
+
         })
     
-    
+    }    
         geoCode();
 
 
 
 function searchCoordinates(longitude, latitude){
-    var requestUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&&latitude=%22+latitude+%22&longitude=%22+longitude+%22&maxradiuskm=300&orderby=time&eventtype=earthquake&endtime&limit=5"
+    var requestUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&&latitude="+ latitude + "&longitude=" + longitude + "&maxradiuskm=300&orderby=time&eventtype=earthquake&endtime&limit=5"
     fetch(requestUrl)
         .then(function (response) {
             return response.json();
@@ -45,10 +66,12 @@ function searchCoordinates(longitude, latitude){
                 time = features.properties.time
 
                 myDate = new Date(time)
+                console.log("mag: " + magnitude + "\n location" + place + "myDate \n" + myDate)
             
             }
 
-    });
+ });
+}
 
 function getInfo(){
     //API filters: Earthquake, start time, end time, and limit
@@ -136,4 +159,6 @@ function earthQuakeByTime(){
 
 getInfo();
     
-earthQuakeByTime();}}
+earthQuakeByTime();
+
+
