@@ -3,15 +3,6 @@ console.log(searchInput);
 const submitButton = document.getElementById('submit-btn');
 console.log(submitButton);
 
-searchInput.addEventListener('input', e => {
-    const value = e.target.value
-    console.log(value)
-})  
-submitButton.addEventListener('click', getInfo())
-console.log(submitButton)
-
-
-
 
 
 function getInfo(){
