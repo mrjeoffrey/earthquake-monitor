@@ -70,6 +70,7 @@ function searchCoordinates(longitude, latitude) {
 				place = features.properties.place;
 				time = features.properties.time;
 
+				//this will turn the Unix_TimeStamp to user's timezone
 				myDate = new Date(time).toLocaleString("en-Us");
 				console.log(
 					"mag: " + magnitude + "\n location" + place + "\n myDate " + myDate
@@ -119,6 +120,7 @@ function getInfo() {
 				// This variable pulls all ids in order 
 				var displayLittleMap = document.getElementById(`severeMap${i + 1}`); 
 
+				//this will turn the Unix_TimeStamp to user's timezone
 				myDate = new Date(time).toLocaleString("en-Us");
 				loc.textContent = place;
 				day.textContent = myDate;
@@ -156,6 +158,7 @@ function earthQuakeByTime() {
 				coord = lat,long
 				console.log(lat,long)
 				
+				//this will turn the Unix_TimeStamp to user's timezone
 				myDate = new Date(time).toLocaleString("en-Us")
 
 				var locationSev = document.getElementById(`sever-location${i + 1}`);
