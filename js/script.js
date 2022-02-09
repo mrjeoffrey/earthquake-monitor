@@ -25,16 +25,25 @@ function getInfo() {
 				var magnitude = features.properties.mag;
 				var place = features.properties.place;
 				var time = features.properties.time;
+				// These variables pull the coordinates indivi
+				var lat = features.geometry.coordinates[1];
+				var long = features.geometry.coordinates[0];
+				var coord = lat,long
+					console.log(lat,long)
+
 
 				// These will list the recent earthquakes in sorted order of magnitude, largest to smallest
 				var day = document.getElementById(`date${i + 1}`);
 				var loc = document.getElementById(`location${i + 1}`);
 				var mag = document.getElementById(`mag${i + 1}`);
+				var displayLittleMap = document.getElementById(`severeMap${i + 1}`); 
 
 				myDate = new Date(time);
 				loc.textContent = place;
 				day.textContent = myDate;
 				mag.textContent = magnitude;
+				displayLittleMap.src = `https://maps.googleapis.com/maps/api/staticmap?&center=${lat},${long}&zoom=9&size=90x62&scale=2&maptype=hybrid&markers=size:tiny|color:red|${lat},${long}&key=AIzaSyC72d4HR-Hqfy8tUtGo4nJDGGvE4ux2Brw`;
+
 			}
 		});
 }
@@ -56,47 +65,39 @@ function earthQuakeByTime() {
 				magnitude = features.properties.mag;
 				place = features.properties.place;
 				time = features.properties.time;
+				lat = features.geometry.coordinates[1];
+				long = features.geometry.coordinates[0];
+				coord = lat,long
+				console.log(lat,long)
 				// console.log(features.properties.mag);
 				myDate = new Date(time);
 
 				var locationSev = document.getElementById(`sever-location${i + 1}`);
 				var magSev = document.getElementById(`sever-mag${i + 1}`);
 				var dateSev = document.getElementById(`sever-date${i + 1}`);
+				var displayLittleMap = document.getElementById(`latestMap${i + 1}`);
 
 				locationSev.innerText = place;
 				magSev.innerText = magnitude;
 				dateSev.innerText = myDate;
+				displayLittleMap.src = `https://maps.googleapis.com/maps/api/staticmap?&center=${lat},${long}&zoom=9&size=90x62&scale=2&maptype=hybrid&markers=size:tiny|color:yellow|${lat},${long}&key=AIzaSyC72d4HR-Hqfy8tUtGo4nJDGGvE4ux2Brw`;
 
 				console.log(magnitude, place, time);
 			}
 		});
 }
 
-// need a couple VARS to translate data from city into long / lat
-// use split method at marker 10 and do a .length to grab the city
-// use .trim
-
-/*
-https://maps.googleapis.com/maps/api/staticmap?center=" + 
-inputSpecWithPlus + "," + inputCityWithPlus + "," + inputStateAbbv
-Brooklyn+Bridge,New+York,NY 
-"&zoom=13&size=90x62&maptype=satellite
-&markers=color:red%7Clabel:S%7C" +
-inputLong + "," + inputLat + 
-40.702147,-74.015794
-"&key=YOUR_API_KEY"
-*/
 
 let bigMap;
 // Initializes GoogleMaps API in Maps Section
 function mapDisplay() {
 	var options = {
 		center: { lat: 36.5935, lng: -122.612 },
-		zoom: 6,
+		zoom: 7,
 		mapTypeId: "hybrid",
 	};
 	bigMap = new google.maps.Map(document.getElementById("map"), options);
-
+	
     var latestUsgs = document.createElement("script");
 
     latestUsgs.src = "https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js";
@@ -124,6 +125,7 @@ function mapDisplay() {
     bigMap.data.addGeoJson(results);
   }
 
-getInfo();
 
+getInfo();
 earthQuakeByTime();
+smallMaps();
