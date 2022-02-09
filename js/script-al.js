@@ -17,8 +17,18 @@ submitButton.addEventListener("click", function () {
 	geoCode();
 });
 
+//clear the search history from local storage
+var clearButton = document.getElementById("clear-btn")
+clearButton.addEventListener("click", function () {
+
+	// clears local storage
+	localStorage.clear();
+	// refresh page
+	location.reload();
+});
+
 // getValue - refactored
-function getValue() {}
+function getValue() { }
 
 // getgeoCode();
 function geoCode() {
@@ -110,15 +120,15 @@ function getInfo() {
 				var lat = features.geometry.coordinates[1];
 				var long = features.geometry.coordinates[0];
 				// This variable loops through the coordinates-however this does not function as coord on its own
-				var coord = lat,long
-					console.log(lat,long)
+				var coord = lat, long
+				console.log(lat, long)
 
 				// These will list the recent earthquakes in sorted order of magnitude, largest to smallest
 				var day = document.getElementById(`date${i + 1}`);
 				var loc = document.getElementById(`location${i + 1}`);
 				var mag = document.getElementById(`mag${i + 1}`);
 				// This variable pulls all ids in order 
-				var displayLittleMap = document.getElementById(`severeMap${i + 1}`); 
+				var displayLittleMap = document.getElementById(`severeMap${i + 1}`);
 
 				//this will turn the Unix_TimeStamp to user's timezone
 				myDate = new Date(time).toLocaleString("en-Us");
@@ -155,9 +165,9 @@ function earthQuakeByTime() {
 				lat = features.geometry.coordinates[1];
 				long = features.geometry.coordinates[0];
 				// This variable loops through the coordinates-however this does not function as coord on its own
-				coord = lat,long
-				console.log(lat,long)
-				
+				coord = lat, long
+				console.log(lat, long)
+
 				//this will turn the Unix_TimeStamp to user's timezone
 				myDate = new Date(time).toLocaleString("en-Us")
 
