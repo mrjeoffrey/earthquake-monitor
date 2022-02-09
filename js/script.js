@@ -169,7 +169,6 @@ function earthQuakeCoords() {
 		});
 }
 
-
 getInfo();
 earthQuakeByTime();
-smallMaps();
+
