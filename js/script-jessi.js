@@ -89,19 +89,6 @@ function earthQuakeByTime() {
 					.substring(10, locationSev.length)
 					.trim();
 				console.log(specLocation.split(" "));
-
-				// picSev.src =
-				// 	"https://maps.googleapis.com/maps/api/staticmap?center=" +
-				// 	inputSpecWithPlus +
-				// 	"," +
-				// 	inputCityWithPlus +
-				// 	"," +
-				// 	inputStateAbbv;
-				// "&zoom=13&size=90x62&maptype=satellite&markers=color:red%7Clabel:S%7C" +
-				// 	inputLong +
-				// 	"," +
-				// 	inputLat +
-				// 	"&key=AIzaSyC72d4HR-Hqfy8tUtGo4nJDGGvE4ux2Brw";
 			}
 		});
 }
