@@ -157,5 +157,6 @@ function earthQuakeCoords() {
 }
 
 getInfo();
+
 earthQuakeByTime();
 
