@@ -17,8 +17,18 @@ submitButton.addEventListener("click", function () {
 	geoCode();
 });
 
+//clear the search history from local storage
+var clearButton = document.getElementById("clear-btn")
+clearButton.addEventListener("click", function () {
+
+	// clears local storage
+	localStorage.clear();
+	// refresh page
+	location.reload();
+});
+
 // getValue - refactored
-function getValue() {}
+function getValue() { }
 
 // getgeoCode();
 function geoCode() {
@@ -70,7 +80,8 @@ function searchCoordinates(longitude, latitude) {
 				place = features.properties.place;
 				time = features.properties.time;
 
-				myDate = new Date(time);
+				//this will turn the Unix_TimeStamp to user's timezone
+				myDate = new Date(time).toLocaleString("en-Us");
 				console.log(
 					"mag: " + magnitude + "\n location" + place + "\n myDate " + myDate
 				);
@@ -78,7 +89,7 @@ function searchCoordinates(longitude, latitude) {
 				var resultMag = document.getElementById(`results${i + 1}`);
 
 				resultMag.textContent =
-					"mag: " + magnitude + "\n location" + place + "\n myDate " + myDate;
+					"Magnitude: " + "\n" + magnitude + "\nLocation: " + place + "\n Date/Time: " + myDate;
 			}
 		});
 }
@@ -109,17 +120,18 @@ function getInfo() {
 				var lat = features.geometry.coordinates[1];
 				var long = features.geometry.coordinates[0];
 				// This variable loops through the coordinates-however this does not function as coord on its own
-				var coord = lat,long
-					console.log(lat,long)
+				var coord = lat, long
+				console.log(lat, long)
 
 				// These will list the recent earthquakes in sorted order of magnitude, largest to smallest
 				var day = document.getElementById(`date${i + 1}`);
 				var loc = document.getElementById(`location${i + 1}`);
 				var mag = document.getElementById(`mag${i + 1}`);
 				// This variable pulls all ids in order 
-				var displayLittleMap = document.getElementById(`severeMap${i + 1}`); 
+				var displayLittleMap = document.getElementById(`severeMap${i + 1}`);
 
-				myDate = new Date(time);
+				//this will turn the Unix_TimeStamp to user's timezone
+				myDate = new Date(time).toLocaleString("en-Us");
 				loc.textContent = place;
 				day.textContent = myDate;
 				mag.textContent = magnitude + " M";
@@ -153,10 +165,11 @@ function earthQuakeByTime() {
 				lat = features.geometry.coordinates[1];
 				long = features.geometry.coordinates[0];
 				// This variable loops through the coordinates-however this does not function as coord on its own
-				coord = lat,long
-				console.log(lat,long)
-				
-				myDate = new Date(time);
+				coord = lat, long
+				console.log(lat, long)
+
+				//this will turn the Unix_TimeStamp to user's timezone
+				myDate = new Date(time).toLocaleString("en-Us")
 
 				var locationSev = document.getElementById(`sever-location${i + 1}`);
 				var magSev = document.getElementById(`sever-mag${i + 1}`);
