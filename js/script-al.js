@@ -1,17 +1,24 @@
 var zipCode;
 var userValue;
+var historyEl = document.getElementById("cityHistoryList");
+var inputEl = document.getElementById("large-input");
 
-// getValue();
+// cityArray grabs localStorage or if empty, creates empty array
+var cityArray = JSON.parse(localStorage.getItem("cityHistory")) || [];
+
+// getValue(); also listens for input
 var submitButton = document.getElementById("submit-btn");
-submitButton.addEventListener("click", getValue);
-
-function getValue() {
-	var inputEl = document.getElementById("large-input");
+submitButton.addEventListener("click", function () {
 	userValue = inputEl.value;
-	console.log(userValue);
+	historyEl.innerHTML = "";
 
+	createHistory();
+	searchHistory();
 	geoCode();
-}
+});
+
+// getValue - refactored
+function getValue() {}
 
 // getgeoCode();
 function geoCode() {
@@ -142,5 +149,44 @@ function earthQuakeByTime() {
 		});
 }
 
+function createHistory() {
+	var initList = userValue;
+
+	// if list is null or empty do this if
+	if (initList !== null || initList !== "") {
+		// if city array index equals -1, don't push to local storage to not have duplicate button.
+		if (cityArray.indexOf(initList) == -1) {
+			cityArray.push(initList);
+			localStorage.setItem("cityHistory", JSON.stringify(cityArray));
+		}
+	}
+}
+
+//searchHistoryList - pull data into local storage
+function searchHistory() {
+	// historyEl.innerHTML = "";
+	var searchList = JSON.parse(localStorage.getItem("cityHistory"));
+	var ulEl = document.createElement("ul");
+
+	for (let i = 0; i < searchList.length; i++) {
+		const btnCity = searchList[i];
+		var liEL = document.createElement("li");
+		var btn = document.createElement("button");
+		btn.textContent = btnCity;
+		ulEl.appendChild(liEL);
+		liEL.appendChild(btn);
+	}
+	historyEl.appendChild(ulEl);
+}
+
+// create event listener
+historyEl.addEventListener("click", function (event) {
+	event.preventDefault();
+	var valueCity = event.target.textContent;
+	userValue = valueCity;
+	geoCode();
+});
+
 getInfo();
 earthQuakeByTime();
+searchHistory();
