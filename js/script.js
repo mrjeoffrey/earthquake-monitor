@@ -41,7 +41,7 @@ function getInfo() {
 				myDate = new Date(time);
 				loc.textContent = place;
 				day.textContent = myDate;
-				mag.textContent = magnitude;
+				mag.textContent = magnitude + " M";
 				displayLittleMap.src = `https://maps.googleapis.com/maps/api/staticmap?&center=${lat},${long}&zoom=9&size=90x62&scale=2&maptype=hybrid&markers=size:tiny|color:red|${lat},${long}&key=AIzaSyC72d4HR-Hqfy8tUtGo4nJDGGvE4ux2Brw`;
 
 			}
@@ -76,13 +76,32 @@ function earthQuakeByTime() {
 				var magSev = document.getElementById(`sever-mag${i + 1}`);
 				var dateSev = document.getElementById(`sever-date${i + 1}`);
 				var displayLittleMap = document.getElementById(`latestMap${i + 1}`);
+				var picSev = document.getElementById(`severpic${i + 1}`);
 
 				locationSev.innerText = place;
-				magSev.innerText = magnitude;
+				magSev.innerText = magnitude + " M";
 				dateSev.innerText = myDate;
 				displayLittleMap.src = `https://maps.googleapis.com/maps/api/staticmap?&center=${lat},${long}&zoom=9&size=90x62&scale=2&maptype=hybrid&markers=size:tiny|color:yellow|${lat},${long}&key=AIzaSyC72d4HR-Hqfy8tUtGo4nJDGGvE4ux2Brw`;
 
 				console.log(magnitude, place, time);
+
+				var specLocation = locationSev.innerText
+					.substring(10, locationSev.length)
+					.trim();
+				console.log(specLocation.split(" "));
+
+				// picSev.src =
+				// 	"https://maps.googleapis.com/maps/api/staticmap?center=" +
+				// 	inputSpecWithPlus +
+				// 	"," +
+				// 	inputCityWithPlus +
+				// 	"," +
+				// 	inputStateAbbv;
+				// "&zoom=13&size=90x62&maptype=satellite&markers=color:red%7Clabel:S%7C" +
+				// 	inputLong +
+				// 	"," +
+				// 	inputLat +
+				// 	"&key=AIzaSyC72d4HR-Hqfy8tUtGo4nJDGGvE4ux2Brw";
 			}
 		});
 }
@@ -100,30 +119,55 @@ function mapDisplay() {
 	
     var latestUsgs = document.createElement("script");
 
-    latestUsgs.src = "https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js";
-    document.getElementsByTagName("head")[0].appendChild(latestUsgs);
-    bigMap.data.setStyle((feature) => {
-      const magnitude = feature.getProperty("mag");
-      return {
-        icon: getCircle(magnitude),
-      };
-    });
-  }
-  
-  function getCircle(magnitude) {
-    return {
-      path: google.maps.SymbolPath.CIRCLE,
-      fillColor: "red",
-      fillOpacity: 0.2,
-      scale: Math.pow(2, magnitude) / 2,
-      strokeColor: "white",
-      strokeWeight: 0.5,
-    };
-  }
-  
-  function eqfeed_callback(results) {
-    bigMap.data.addGeoJson(results);
-  }
+	latestUsgs.src =
+		"https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js";
+	document.getElementsByTagName("head")[0].appendChild(latestUsgs);
+	bigMap.data.setStyle((feature) => {
+		const magnitude = feature.getProperty("mag");
+		return {
+			icon: getCircle(magnitude),
+		};
+	});
+}
+
+function getCircle(magnitude) {
+	return {
+		path: google.maps.SymbolPath.CIRCLE,
+		fillColor: "orange",
+		fillOpacity: 0.35,
+		scale: Math.pow(3, magnitude) / 2,
+		strokeColor: "white",
+		strokeWeight: 0.8,
+	};
+}
+
+function eqfeed_callback(results) {
+	bigMap.data.addGeoJson(results);
+}
+
+function earthQuakeCoords() {
+	var requestUrl =
+		"https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&&minlatitude=31.9833333&minlongitude=-80.79999972222222&orderby=time&eventtype=earthquake&endtime&limit=5";
+
+	fetch(requestUrl)
+		.then(function (response) {
+			return response.json();
+		})
+		.then(function (data) {
+			console.log(data); // all the data on the API
+
+			for (var i = 0; i < data.features.length; i++) {
+				features = data.features[i];
+				coords = features.geometry.coordinates;
+				lat = coords[0];
+				long = coords[1];
+
+				myDate = new Date(time);
+
+				console.log("lat: " + lat + "long: " + long);
+			}
+		});
+}
 
 
 getInfo();
