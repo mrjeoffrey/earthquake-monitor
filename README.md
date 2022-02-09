@@ -20,6 +20,9 @@
 * Webpage:
 
 * Images of the Earthquake Monitor website:
+* ![Earthquake-Monitor-Sitepic1](https://user-images.githubusercontent.com/92402053/153246007-992d5603-ddac-4124-af1d-f29722cc1f01.png)
+* ![Earthquake-Monitor-Sitepic2](https://user-images.githubusercontent.com/92402053/153246031-d609a4e6-d291-42a7-ac55-5fc3cde5b8d2.png)
+
 
 ## Install
 To use this Earthquake App or to view the code, go to `terminal` or `gitbash` and move to Desktop
