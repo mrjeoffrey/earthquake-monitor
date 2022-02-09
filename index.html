@@ -8,6 +8,7 @@
 	<title>Quakes: Up-to-date Earthquake Actvity</title>
 	<link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/flowbite.min.css" />
 	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./css/map.css">
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-HDH1SLCBQN"></script>
@@ -23,7 +24,7 @@
 
 <body>
 	<!--Title Bar with styles-->
-	<header class="bg-gray-800 border-gray-200 px-2 sm:px-4 py-2.5">
+	<header class="bg-gray-800 border-gray-200 px-2 sm:px-4 py-2.5 sticky">
 		<!-- Controller Div with flex-->
 		<div class="container flex flex-wrap justify-center items-center mx-auto">
 			<!-- Site Title -->
@@ -35,45 +36,55 @@
 		</div>
 	</header>
 
+
+
 	<!-- Latest Row	 -->
-	<section id="map-hero" class="bg-gray-100 border-gray-200 px-2 sm:px-4 py-2.5">
+	<section class="bg-custom border-gray-200 px-2 sm:px-4 py-2.5">
 		<!-- Controller Div with flex-->
-		<div class="container">
-			<div class="flex flex-wrap justify-evenly mx-auto my-12">
-				<!-- Search Card-->
-				<div href="#"
-					class="w-1/2 block p-8 max-w-lg bg-white rounded-lg border border-gray-200 shadow-lg hover:bg-gray-100">
-					<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Earthquake
-						Monitor v.2.5</h5>
-					<p class="font-normal text-gray-700">Search earthquakes near you, see
-						the most recent earthquakes available, read news related to recent tremors Keep your
-						family
-						safe.</p>
-					<label for="large-input" class="block mt-6 mb-2 text-md font-medium text-gray-900">Search
-						for a City to View the Latest Earthquakes
-					</label>
-					<input type="text" id="large-input input" placeholder="Enter City Name or Zip Code" 
-						class="block p-3 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-green-500 focus:border-green-500 ">
-					<button type="submit" id="submit-btn"
-						class="mt-4 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded text-sm px-5 py-4">Search</button>
-				</div>
 
-				<!-- Search Results-->
-				<div class="w-1/2 block p-0 max-w-lg text-center">
-					<div href="#" class="block p-8 max-w-lg rounded-lg border border-gray-100 shadow-lg my-8">
-						<h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Map</h5>
-					</div>
+		<div class="p-6 flex flex-wrap justify-around w-full max-w-8xl mx-auto">
+			<div class="container">
+
+				<div class="flex flex-wrap justify-around mx-auto my-6">
+					<!-- Search Card-->
 					<div href="#"
-						class="block p-8 max-w-lg bg-white rounded-lg border border-gray-200 shadow-lg hover:bg-gray-100">
-						<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">%City</h5>
-						<p class="font-normal text-gray-700">Data | Data | Data | Data</p>
+						class="w-1/2 block p-8 max-w-lg bg-white rounded-lg border border-gray-200 shadow-lg hover:bg-gray-100">
+						<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Earthquake
+							Monitor v.2.5</h5>
+						<p class="font-normal text-gray-700">Search earthquakes near you, see
+							the most recent earthquakes available, read news related to recent tremors Keep your
+							family
+							safe.</p>
+						<label for="large-input" class="block mt-6 mb-2 text-md font-medium text-gray-900">Search
+							for a City to View the Latest Earthquakes
+						</label>
+						<input type="text" id="large-input" placeholder="Enter City Name or Zip Code"
+							class="block p-3 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-green-500 focus:border-green-500">
+						<button type="submit"
+							class="mt-4 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded text-sm px-5 py-4">Search</button>
 					</div>
 
+					<!-- Search Results-->
+					<div class="w-1/2 block p-0 max-w-lg text-center">
+						<!-- <div href="#" class="block p-8 max-w-lg rounded-lg border border-gray-100 shadow-lg my-8">
+							<h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Map</h5> 
+						</div>-->
+						<div href="#"
+							class="block p-8 max-w-lg bg-white rounded-lg border border-gray-200 shadow-lg hover:bg-gray-100">
+							<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">%City</h5>
+							<p class="font-normal text-gray-700">Data | Data | Data | Data</p>
+						</div>
+
+
+					</div>
 
 				</div>
-
 			</div>
-		</div>
+	</section>
+
+	<!-- Map Section -->
+	<section class="container mx-auto">
+		<div id="map"></div>
 	</section>
 
 	<!-- News Section  -->
@@ -81,9 +92,9 @@
 		<section class="flex flex-wrap justify-evenly w-full max-w-8xl mx-auto px-4 sm:px-2">
 
 			<!-- Latest Earthquakes -->
-			<div class="w-auto bg-white " style="width: 45%;">
-				<div class="rounded-xl border border-gray-100 hover:shadow-lg bg-white mb-4 sm:mx-2 overflow-hidden">
-					<div class="p-4 w-full bg-white rounded-lg border shadow-md sm:p-8">
+			<div class="w-auto bg-white " style="width: 30%;">
+				<div class="rounded-xl border border-gray-300 hover:shadow-lg bg-white mb-4 sm:mx-2 overflow-hidden">
+					<div class="p-4 w-full bg-white shadow-md sm:p-8">
 
 						<div class="flex justify-between items-center mb-4">
 							<h3 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Latest Earthquakes
@@ -95,8 +106,8 @@
 								<li class="py-3 sm:py-4">
 									<div class="flex items-center space-x-4">
 										<div class="flex-shrink-0">
-											<img class="rounded" style="width:90px;" src="./img/map-preview.png"
-												alt="map">
+											<img class="rounded" id="sever-pic1" style="width:90px;"
+												src="./img/map-preview.png" alt="map">
 										</div>
 										<div class="flex-1 min-w-0">
 											<p class="text-sm font-medium text-gray-900 truncate" id="sever-location1">
@@ -106,8 +117,8 @@
 												Feb 1, 2022 10:23 AM PST
 											</p>
 										</div>
-										<div
-											class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white" id="sever-mag1">
+										<div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
+											id="sever-mag1">
 											5.2 M
 										</div>
 									</div>
@@ -115,8 +126,8 @@
 								<li class="py-3 sm:py-4">
 									<div class="flex items-center space-x-4">
 										<div class="flex-shrink-0">
-											<img class="rounded" style="width:90px;" src="./img/map-preview.png"
-												alt="map">
+											<img class="rounded" id="sever-pic2" style="width:90px;"
+												src="./img/map-preview.png" alt="map">
 										</div>
 										<div class="flex-1 min-w-0">
 											<p class="text-sm font-medium text-gray-900 truncate" id="sever-location2">
@@ -126,8 +137,8 @@
 												Feb 1, 2022 10:23 AM PST
 											</p>
 										</div>
-										<div
-											class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white" id="sever-mag2">
+										<div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
+											id="sever-mag2">
 											5.2 M
 										</div>
 									</div>
@@ -135,8 +146,8 @@
 								<li class="py-3 sm:py-4">
 									<div class="flex items-center space-x-4">
 										<div class="flex-shrink-0">
-											<img class="rounded" style="width:90px;" src="./img/map-preview.png"
-												alt="map">
+											<img class="rounded" id="sever-pic3" style="width:90px;"
+												src="./img/map-preview.png" alt="map">
 										</div>
 										<div class="flex-1 min-w-0">
 											<p class="text-sm font-medium text-gray-900 truncate" id="sever-location3">
@@ -146,8 +157,8 @@
 												Feb 1, 2022 10:23 AM PST
 											</p>
 										</div>
-										<div
-											class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white" id="sever-mag3">
+										<div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
+											id="sever-mag3">
 											5.2 M
 										</div>
 									</div>
@@ -155,8 +166,8 @@
 								<li class="py-3 sm:py-4">
 									<div class="flex items-center space-x-4">
 										<div class="flex-shrink-0">
-											<img class="rounded" style="width:90px;" src="./img/map-preview.png"
-												alt="map">
+											<img class="rounded" id="sever-pic4" style="width:90px;"
+												src="./img/map-preview.png" alt="map">
 										</div>
 										<div class="flex-1 min-w-0">
 											<p class="text-sm font-medium text-gray-900 truncate" id="sever-location4">
@@ -166,8 +177,8 @@
 												Feb 1, 2022 10:23 AM PST
 											</p>
 										</div>
-										<div
-											class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white" id="sever-mag4">
+										<div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
+											id="sever-mag4">
 											5.2 M
 										</div>
 									</div>
@@ -175,8 +186,8 @@
 								<li class="py-3 sm:py-4">
 									<div class="flex items-center space-x-4">
 										<div class="flex-shrink-0">
-											<img class="rounded" style="width:90px;" src="./img/map-preview.png"
-												alt="map">
+											<img class="rounded" id="sever-pic5" style="width:90px;"
+												src="./img/map-preview.png" alt="map">
 										</div>
 										<div class="flex-1 min-w-0">
 											<p class="text-sm font-medium text-gray-900 truncate" id="sever-location5">
@@ -186,8 +197,8 @@
 												Feb 1, 2022 10:23 AM PST
 											</p>
 										</div>
-										<div
-											class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white" id="sever-mag5">
+										<div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
+											id="sever-mag5">
 											5.2 M
 										</div>
 									</div>
@@ -195,8 +206,8 @@
 								<li class="py-3 sm:py-4">
 									<div class="flex items-center space-x-4">
 										<div class="flex-shrink-0">
-											<img class="rounded" style="width:90px;" src="./img/map-preview.png"
-												alt="map">
+											<img class="rounded" id="sever-pic6" style="width:90px;"
+												src="./img/map-preview.png" alt="map">
 										</div>
 										<div class="flex-1 min-w-0">
 											<p class="text-sm font-medium text-gray-900 truncate" id="sever-location6">
@@ -206,8 +217,8 @@
 												Feb 1, 2022 10:23 AM PST
 											</p>
 										</div>
-										<div
-											class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white" id="sever-mag6">
+										<div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
+											id="sever-mag6">
 											5.2 M
 										</div>
 									</div>
@@ -215,8 +226,8 @@
 								<li class="py-3 sm:py-4">
 									<div class="flex items-center space-x-4">
 										<div class="flex-shrink-0">
-											<img class="rounded" style="width:90px;" src="./img/map-preview.png"
-												alt="map">
+											<img class="rounded" id="sever-pic7" style="width:90px;"
+												src="./img/map-preview.png" alt="map">
 										</div>
 										<div class="flex-1 min-w-0">
 											<p class="text-sm font-medium text-gray-900 truncate" id="sever-location7">
@@ -226,8 +237,8 @@
 												Feb 1, 2022 10:23 AM PST
 											</p>
 										</div>
-										<div
-											class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white" id="sever-mag7">
+										<div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
+											id="sever-mag7">
 											5.2 M
 										</div>
 									</div>
@@ -235,8 +246,8 @@
 								<li class="py-3 sm:py-4">
 									<div class="flex items-center space-x-4">
 										<div class="flex-shrink-0">
-											<img class="rounded" style="width:90px;" src="./img/map-preview.png"
-												alt="map">
+											<img class="rounded" id="sever-pic8" style="width:90px;"
+												src="./img/map-preview.png" alt="map">
 										</div>
 										<div class="flex-1 min-w-0">
 											<p class="text-sm font-medium text-gray-900 truncate" id="sever-location8">
@@ -246,8 +257,8 @@
 												Feb 1, 2022 10:23 AM PST
 											</p>
 										</div>
-										<div
-											class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white" id="sever-mag8">
+										<div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
+											id="sever-mag8">
 											5.2 M
 										</div>
 									</div>
@@ -255,8 +266,8 @@
 								<li class="py-3 sm:py-4">
 									<div class="flex items-center space-x-4">
 										<div class="flex-shrink-0">
-											<img class="rounded" style="width:90px;" src="./img/map-preview.png"
-												alt="map">
+											<img class="rounded" id="sever-pic9" style="width:90px;"
+												src="./img/map-preview.png" alt="map">
 										</div>
 										<div class="flex-1 min-w-0">
 											<p class="text-sm font-medium text-gray-900 truncate" id="sever-location9">
@@ -266,8 +277,8 @@
 												Feb 1, 2022 10:23 AM PST
 											</p>
 										</div>
-										<div
-											class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white" id="sever-mag9">
+										<div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
+											id="sever-mag9">
 											5.2 M
 										</div>
 									</div>
@@ -275,8 +286,8 @@
 								<li class="py-3 sm:py-4">
 									<div class="flex items-center space-x-4">
 										<div class="flex-shrink-0">
-											<img class="rounded" style="width:90px;" src="./img/map-preview.png"
-												alt="map">
+											<img class="rounded" id="sever-pic10" style="width:90px;"
+												src="./img/map-preview.png" alt="map">
 										</div>
 										<div class="flex-1 min-w-0">
 											<p class="text-sm font-medium text-gray-900 truncate" id="sever-location10">
@@ -286,8 +297,8 @@
 												Feb 1, 2022 10:23 AM PST
 											</p>
 										</div>
-										<div
-											class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white" id="sever-mag10">
+										<div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white"
+											id="sever-mag10">
 											5.2 M
 										</div>
 									</div>
@@ -299,9 +310,9 @@
 			</div>
 
 			<!-- Earthquake Severity -->
-			<div class="w-auto bg-white " style="width: 45%;">
-				<div class="rounded-xl border border-gray-100 hover:shadow-lg bg-white  mb-4 sm:mx-2 overflow-hidden">
-					<div class="p-4 w-full bg-white rounded-lg border shadow-md sm:p-8">
+			<div class="w-auto bg-white " style="width: 30%;">
+				<div class="rounded-xl border border-gray-300 hover:shadow-lg bg-white  mb-4 sm:mx-2 overflow-hidden">
+					<div class="p-4 w-full bg-white shadow-md sm:p-8">
 
 						<div class="flex justify-between items-center mb-4">
 							<h3 class="text-xl font-bold leading-none text-gray-900">Earthquake Severity</h3>
@@ -317,14 +328,15 @@
 										</div>
 										<div class="flex-1 min-w-0">
 											<p id="location1" class="text-sm font-medium text-gray-900 truncate">
-						
+
 											</p>
 											<p id="date1" class="text-xs text-gray-500 truncate">
-												
+
 											</p>
 										</div>
-										<div id="mag1" class="inline-flex items-center text-base font-semibold text-gray-900">
-											
+										<div id="mag1"
+											class="inline-flex items-center text-base font-semibold text-gray-900">
+
 										</div>
 									</div>
 								</li>
@@ -336,14 +348,15 @@
 										</div>
 										<div class="flex-1 min-w-0">
 											<p id="location2" class="text-sm font-medium text-gray-900 truncate">
-												
+
 											</p>
 											<p id="date2" class="text-xs text-gray-500 truncate">
-												
+
 											</p>
 										</div>
-										<div id="mag2" class="inline-flex items-center text-base font-semibold text-gray-900">
-										
+										<div id="mag2"
+											class="inline-flex items-center text-base font-semibold text-gray-900">
+
 										</div>
 									</div>
 								</li>
@@ -355,14 +368,15 @@
 										</div>
 										<div class="flex-1 min-w-0">
 											<p id="location3" class="text-sm font-medium text-gray-900 truncate">
-												
+
 											</p>
 											<p id="date3" class="text-xs text-gray-500 truncate">
-												
+
 											</p>
 										</div>
-										<div id="mag3" class="inline-flex items-center text-base font-semibold text-gray-900">
-											
+										<div id="mag3"
+											class="inline-flex items-center text-base font-semibold text-gray-900">
+
 										</div>
 									</div>
 								</li>
@@ -374,14 +388,15 @@
 										</div>
 										<div class="flex-1 min-w-0">
 											<p id="location4" class="text-sm font-medium text-gray-900 truncate">
-												
+
 											</p>
 											<p id="date4" class="text-xs text-gray-500 truncate">
-												
+
 											</p>
 										</div>
-										<div id="mag4" class="inline-flex items-center text-base font-semibold text-gray-900">
-											
+										<div id="mag4"
+											class="inline-flex items-center text-base font-semibold text-gray-900">
+
 										</div>
 									</div>
 								</li>
@@ -393,14 +408,15 @@
 										</div>
 										<div class="flex-1 min-w-0">
 											<p id="location5" class="text-sm font-medium text-gray-900 truncate">
-												
+
 											</p>
 											<p id="date5" class="text-xs text-gray-500 truncate">
-												
+
 											</p>
 										</div>
-										<div id="mag5" class="inline-flex items-center text-base font-semibold text-gray-900">
-										
+										<div id="mag5"
+											class="inline-flex items-center text-base font-semibold text-gray-900">
+
 										</div>
 									</div>
 								</li>
@@ -412,14 +428,15 @@
 										</div>
 										<div class="flex-1 min-w-0">
 											<p id="location6" class="text-sm font-medium text-gray-900 truncate">
-												
+
 											</p>
 											<p id="date6" class="text-xs text-gray-500 truncate">
-												
+
 											</p>
 										</div>
-										<div id="mag6" class="inline-flex items-center text-base font-semibold text-gray-900">
-											
+										<div id="mag6"
+											class="inline-flex items-center text-base font-semibold text-gray-900">
+
 										</div>
 									</div>
 								</li>
@@ -431,14 +448,15 @@
 										</div>
 										<div class="flex-1 min-w-0">
 											<p id="location7" class="text-sm font-medium text-gray-900 truncate">
-												
+
 											</p>
 											<p id="date7" class="text-xs text-gray-500 truncate">
-												
+
 											</p>
 										</div>
-										<div id="mag7" class="inline-flex items-center text-base font-semibold text-gray-900">
-											
+										<div id="mag7"
+											class="inline-flex items-center text-base font-semibold text-gray-900">
+
 										</div>
 									</div>
 								</li>
@@ -450,14 +468,15 @@
 										</div>
 										<div class="flex-1 min-w-0">
 											<p id="location8" class="text-sm font-medium text-gray-900 truncate">
-												
+
 											</p>
 											<p id="date8" class="text-xs text-gray-500 truncate">
-												
+
 											</p>
 										</div>
-										<div id="mag8" class="inline-flex items-center text-base font-semibold text-gray-900">
-										
+										<div id="mag8"
+											class="inline-flex items-center text-base font-semibold text-gray-900">
+
 										</div>
 									</div>
 								</li>
@@ -469,14 +488,15 @@
 										</div>
 										<div class="flex-1 min-w-0">
 											<p id="location9" class="text-sm font-medium text-gray-900 truncate">
-												
+
 											</p>
 											<p id="date9" class="text-xs text-gray-500 truncate">
-												
+
 											</p>
 										</div>
-										<div id="mag9" class="inline-flex items-center text-base font-semibold text-gray-900">
-											
+										<div id="mag9"
+											class="inline-flex items-center text-base font-semibold text-gray-900">
+
 										</div>
 									</div>
 								</li>
@@ -488,14 +508,15 @@
 										</div>
 										<div class="flex-1 min-w-0">
 											<p id="location10" class="text-sm font-medium text-gray-900 truncate">
-												
+
 											</p>
 											<p id="date10" class="text-xs text-gray-500 truncate">
-												
+
 											</p>
 										</div>
-										<div id="mag10" class="inline-flex items-center text-base font-semibold text-gray-900">
-											
+										<div id="mag10"
+											class="inline-flex items-center text-base font-semibold text-gray-900">
+
 										</div>
 									</div>
 								</li>
@@ -506,47 +527,17 @@
 				</div>
 			</div>
 
+			<div class="w-auto bg-white " style="width: 30%;">
+				<iframe
+					src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fusgs&tabs=timeline&width=352&height=1055&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+					width="352" height="1055px" style="border:none;border-radius:.75rem;overflow:hidden" scrolling="no"
+					frameborder="0" allowfullscreen="true"
+					allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+					id="news"></iframe>
+			</div>
+
 		</section>
 	</div>
-
-
-
-
-
-	<!-- <section id="usgs" class="hidden">
-			<section class="row">
-				<div class="col-lg-3"></div>
-				<div class="col-lg-6 quakeCard">
-					Listing 10 of the latest earthquakes by city search
-					<h4>City</h4>
-					<h5>Latest Earthquakes:</h5>
-					<h6 id="quakesOne">Earthquake 1: </h6><br>
-					<h6 id="quakesTwo">Earthquake 2: </h6><br>
-					<h6 id="quakesThree">Earthquake 3: </h6><br>
-					<h6 id="quakesFour">Earthquake 4: </h6><br>
-					<h6 id="quakesFive">Earthquake 5: </h6><br>
-					<h6 id="quakesSix">Earthquake 6: </h6><br>
-					<h6 id="quakesSeven">Earthquake 7: </h6><br>
-					<h6 id="quakesEight">Earthquake 8: </h6><br>
-					<h6 id="quakesNine">Earthquake 9: </h6><br>
-					<h6 id="quakesTen">Earthquake 10: </h6><br>
-			</section>
-			Listing 5 of the latest earthquakes in the city by magnitude, largest to smallest
-			<section id="usgs" class="hidden">
-				<section class="row">
-					<div class="col-lg-3"></div>
-					<div class="col-lg-6 quakeCard">
-						Listing the latest earthquakes in the city searched by magnitude, largest to smallest
-						<div class="col-lg-6 quakeCard">
-							<h4>City</h4>
-							<h5 id="fiveDay">Latest Earthquakes by Magnitude</h5><br>
-							<h6 id="magSevere">Severe: </h6><br>
-							<h6 id="magModerate">Moderate: </h6><br>
-							<h6 id="magMild">Mild: </h6><br>
-						</div>
-						<div class="col-lg-3"></div>
-				</section>
-			</section> -->
 
 	<footer class="w-full py-12 bg-gray-800 text-white">
 		<div class="px-4 mx-auto w-full">
@@ -675,16 +666,18 @@
 	</footer>
 	<script src="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/flowbite.bundle.js"></script>
 
-	<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
-		integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
-		crossorigin="anonymous"></script> -->
-	<script src="js/script.js"></script>
+
+
+
+	<script src="/js/script.js"></script>
+	<!-- <script src="/js/bkgmap.js"></script> -->
+	<script src="/js/map.js"></script>
+	<script async
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC72d4HR-Hqfy8tUtGo4nJDGGvE4ux2Brw&callback=mapDisplay&region=US">
+		</script>
 </body>
 
 </html>
