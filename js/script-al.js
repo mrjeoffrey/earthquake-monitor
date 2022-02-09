@@ -89,7 +89,7 @@ function searchCoordinates(longitude, latitude) {
 				var resultMag = document.getElementById(`results${i + 1}`);
 
 				resultMag.textContent =
-					"Manitude: " + "\n" + magnitude + "\nLocation: " + place + "\n Date/Time: " + myDate;
+					"Magnitude: " + "\n" + magnitude + "\nLocation: " + place + "\n Date/Time: " + myDate;
 			}
 		});
 }
