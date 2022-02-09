@@ -1,7 +1,7 @@
 # Earthquake Monitor
 
 ## Description 
-* This Earthquake Monitor app will display live earthquake data of the ten most recent earthquakes of both California and a searched zip code. It will also provide recent California earthquake news, and will sort the recent earthquakes by magnitude for a user to view for California and for a searched zip code.
+* This Earthquake Monitor website will display live earthquake data of the ten most recent earthquakes of both California and a searched zip code. It will also provide recent California earthquake news, and will sort the recent earthquakes by magnitude for a user to view for California and for a searched zip code.
 
 ## User Story
 * WHEN the Earthquake Monitor page loads
@@ -37,7 +37,7 @@ Clone this repo
 Open folder in VisualStudioCode
 
 # Credits:
-* © 2022 UC Irvine Coding Bootcamp Project 1 Students:
+* © 2022 UCI Full-Stack Web Developer BootCamp Project 1 Students:
 
 * Jasper Barcial
 * Jeoffrey Batangan
