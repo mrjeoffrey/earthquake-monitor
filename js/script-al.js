@@ -70,7 +70,7 @@ function searchCoordinates(longitude, latitude) {
 				place = features.properties.place;
 				time = features.properties.time;
 
-				myDate = new Date(time);
+				myDate = new Date(time).toLocaleString("en-Us");
 				console.log(
 					"mag: " + magnitude + "\n location" + place + "\n myDate " + myDate
 				);
@@ -78,7 +78,7 @@ function searchCoordinates(longitude, latitude) {
 				var resultMag = document.getElementById(`results${i + 1}`);
 
 				resultMag.textContent =
-					"mag: " + magnitude + "\n location" + place + "\n myDate " + myDate;
+					"Manitude: " + "\n" + magnitude + "\nLocation: " + place + "\n Date/Time: " + myDate;
 			}
 		});
 }
@@ -119,7 +119,7 @@ function getInfo() {
 				// This variable pulls all ids in order 
 				var displayLittleMap = document.getElementById(`severeMap${i + 1}`); 
 
-				myDate = new Date(time);
+				myDate = new Date(time).toLocaleString("en-Us");
 				loc.textContent = place;
 				day.textContent = myDate;
 				mag.textContent = magnitude + " M";
@@ -156,7 +156,7 @@ function earthQuakeByTime() {
 				coord = lat,long
 				console.log(lat,long)
 				
-				myDate = new Date(time);
+				myDate = new Date(time).toLocaleString("en-Us")
 
 				var locationSev = document.getElementById(`sever-location${i + 1}`);
 				var magSev = document.getElementById(`sever-mag${i + 1}`);
