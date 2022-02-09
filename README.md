@@ -5,9 +5,9 @@
 
 ## User Story
 * WHEN the Earthquake Monitor page loads
-* THEN I am presented with the ten most recent California earthquakes, earthquake news, and the recent earthquakes will be sorted by magnitude. 
+* THEN I am presented with the ten most recent California earthquakes, earthquake news from USGS Facebook page, and the recent earthquakes will be sorted by magnitude. 
 * WHEN I enter a zip code, within California
-* THEN I am presented with the ten most recent California earthquakes, earthquake news for the area, within a 100 mile radius, and the recent earthquakes for that area will be sorted by magnitude. 
+* THEN I am presented with the USGS Facebook page news, the ten most recent California earthquakes for the zip code searched, within a 100 mile radius, and the recent earthquakes for that area will be sorted by magnitude. 
 * IF there are no recent earthquakes within a 100 mile radius of the searched area
 * THEN I am given an alert that "No recent earthquakes have happened within 100 miles of your zip code."
 * AFTER performing a zip code search
@@ -15,7 +15,7 @@
 
 
 # Links
-* GitHub Repository: https://github.com/mrjeoffrey/earthquake-monitor
+* GitHub Repository: https://bit.ly/earthquake-monitor-2022
 
 * Webpage:
 
