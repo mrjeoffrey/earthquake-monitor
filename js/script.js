@@ -70,10 +70,8 @@ function earthQuakeByTime() {
 
 				console.log(magnitude, place, time);
 
-				var specLocation = locationSev.innerText
-					.substring(10, locationSev.length)
-					.trim();
-				console.log(specLocation.split(" "));
+				var specLocation = locationSev.innerText.split("of")[1];
+				console.log(specLocation.trim());
 
 				// picSev.src =
 				// 	"https://maps.googleapis.com/maps/api/staticmap?center=" +
