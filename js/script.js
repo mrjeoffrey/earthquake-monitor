@@ -169,8 +169,7 @@ function earthQuakeCoords() {
 }
 
 getInfo();
-    
-earthQuakeByTime();
 
+earthQuakeByTime();
 
 earthQuakeByTime();
