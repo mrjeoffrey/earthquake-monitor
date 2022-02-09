@@ -1,58 +1,49 @@
-// var searchInput = document.getElementById("input")
-// console.log (searchInput)
-// var submitButtonEl = document.querySelector("submit-btn")
-// function getValue(){
-//     var inputVal = document.querySelector("input")
-//     var value = inputVal.value
-//     console.log(value)
-// }
+var zipCode;
+var userValue;
+
 // getValue();
 var submitButton = document.getElementById("submit-btn")
-submitButton.addEventListener("click", geoCode)
-let value 
+submitButton.addEventListener("click", getValue)
+
 function getValue(){
-    var inputVal = document.querySelector("#large-input")
-    var value = inputVal.value
-    console.log(value)
+    var inputEl = document.getElementById("large-input")
+    userValue = inputEl.value
+    console.log(userValue)
+
+    geoCode();
 }
-// getValue()
+
+// getgeoCode();
 function geoCode() {
-    
-    // var APIKey = "AIzaSyAv_sX-T1PMgiRLVrTjhrRAbJ-K7Plw9Nw"
-    // var longitude = "-119.4179324"
-    // var latitude = "36.778261"
-    var zipCode  ;
-    var userInput = document.getElementById("input")
-    var zipCode = userInput.value
+
+
+    zipCode = userValue
+
     var url = "https://maps.googleapis.com/maps/api/geocode/json?address=California?zipcode=" + zipCode + "&key=AIzaSyAv_sX-T1PMgiRLVrTjhrRAbJ-K7Plw9Nw"
+
     console.log(url);
+
     fetch(url)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
             console.log(data)  
-
+            var city = document.getElementById("cityName");
+            city.textContent = data.results[0].formatted_address
             var results = data.results[0].geometry.location
+            console.log(results)
             var latitude = results.lat
             var longitude = results.lng
-            // var zipCity = results.address_components.types
-            // var zipCode = results.address_components.postal_code
-            // console.log(zipCode)
-            
+
             console.log(latitude)
             console.log(longitude)
             searchCoordinates(longitude, latitude)
             
-            getValue()
-
         })
     
     }    
-        geoCode();
-
-
-
+   
 function searchCoordinates(longitude, latitude){
     var requestUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&&latitude="+ latitude + "&longitude=" + longitude + "&maxradiuskm=300&orderby=time&eventtype=earthquake&endtime&limit=5"
     fetch(requestUrl)
@@ -71,7 +62,10 @@ function searchCoordinates(longitude, latitude){
                 myDate = new Date(time)
                 console.log("mag: " + magnitude + "\n location" + place + "\n myDate " + myDate)
                 
-                
+                var resultMag = document.getElementById(`results${i+1}`);
+
+                resultMag.textContent = "mag: " + magnitude + "\n location" + place + "\n myDate " + myDate;
+
             }
 
  });
@@ -93,19 +87,7 @@ function getInfo(){
                 );
                 console.log(sorted);
             
-            //  var features = data.features // the 'feature' object inside the 'data'
-            
-            // console.log(features[1])
 
-
-            // 
-            
-
-            //  var features = data.features // the 'feature' object inside the 'data'
-            
-            // console.log(features[1])
-
-            // This loop is rendering the date, location, and magnitude dynamically to the page
             for (var i = 0; i < data.features.length; i++){
                 features = data.features[i];
                 var magnitude = features.properties.mag
@@ -138,10 +120,6 @@ function earthQuakeByTime(){
         .then(function (data){
             console.log(data) // all the data on the API
 
-
-            // var longitude = data.features[i].geometry.coordinates[0]
-            // var latitude = data.features[i].geometry.coordinates[1]
-            // this loop is getting all the 'features' object giving us direct info and access on what specific 'key' we want (i.e place, magnitute, date, etc...)
             for (var i = 0; i < data.features.length; i++) {
                 features = data.features[i];
                 magnitude = features.properties.mag
@@ -162,7 +140,6 @@ function earthQuakeByTime(){
 }
 
 getInfo();
-    
 earthQuakeByTime();
 
 

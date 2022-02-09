@@ -60,7 +60,7 @@
 						</label>
 						<input type="text" id="large-input" placeholder="Enter City Name or Zip Code"
 							class="block p-3 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-green-500 focus:border-green-500">
-						<button type="submit"
+						<button type="submit" id="submit-btn"
 							class="mt-4 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded text-sm px-5 py-4">Search</button>
 					</div>
 
@@ -71,8 +71,17 @@
 						</div>-->
 						<div href="#"
 							class="block p-8 max-w-lg bg-white rounded-lg border border-gray-200 shadow-lg hover:bg-gray-100">
-							<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">%City</h5>
-							<p class="font-normal text-gray-700">Data | Data | Data | Data</p>
+							<h5 id="cityName" class="mb-2 text-2xl font-bold tracking-tight text-gray-900">%City</h5>
+							<p>Nearest Earthquakes within 300km</p>
+							<p id="results1" class="font-normal text-gray-700 my-3">DataHere</p>
+							<hr>
+							<p id="results2" class="font-normal text-gray-700 my-3">DataHere</p>
+							<hr>
+							<p id="results3" class="font-normal text-gray-700 my-3">DataHere</p>
+							<hr>
+							<p id="results4" class="font-normal text-gray-700 my-3">DataHere</p>
+							<hr>
+							<p id="results5" class="font-normal text-gray-700 my-3">DataHere</p>
 						</div>
 
 
@@ -672,9 +681,9 @@
 
 
 
-	<script src="/js/script.js"></script>
-	<!-- <script src="/js/bkgmap.js"></script> -->
-	<script src="/js/map.js"></script>
+	<script src="./js/script.js"></script>
+	<script src="./js/script-al.js"></script>	
+	<script src="./js/map.js"></script>
 	<script async
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC72d4HR-Hqfy8tUtGo4nJDGGvE4ux2Brw&callback=mapDisplay&region=US">
 		</script>
