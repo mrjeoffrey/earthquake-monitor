@@ -15,9 +15,9 @@
 
 
 # Links
-* GitHub Repository: https://bit.ly/earthquake-monitor-2022
+* GitHub Repository: https://github.com/mrjeoffrey/earthquake-monitor
 
-* Webpage:
+* Webpage: https://mrjeoffrey.github.io/earthquake-monitor/
 
 * Images of the Earthquake Monitor website:
 
